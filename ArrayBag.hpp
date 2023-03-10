@@ -1,4 +1,8 @@
 /*
+Name: Tasmia Chowdhury 
+Class: 235 
+Date: 3/1
+
 ArrayBag interface for term project
 CSCI 235 Spring 2023
 */
@@ -50,7 +54,15 @@ public:
     @return the number of times an_entry is found in items_
   **/
   int getFrequencyOf(const ItemType& an_entry) const;
+  /**
+    @param:   A reference to another ArrayBag object
+    @post:    Combines the contents from both ArrayBag objects, including duplicates, adding items from the argument bag as long as there is space.
+    Example: [1, 2, 3] += [1, 4] will produce [1, 2, 3, 1, 4]
+*/
 
+   void operator+=(const ArrayBag<ItemType> &rhs) const; 
+
+   void operator/=(const ArrayBag<ItemType> &rhs) const;
 
 
 

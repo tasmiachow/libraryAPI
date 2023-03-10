@@ -1,4 +1,8 @@
 /*
+Name: Tasmia Chowdhury 
+Class: 235 
+Date: 3/1
+
 ArrayBag implementation for term project
 CSCI 235 Spring 2023
 */
@@ -135,3 +139,32 @@ int ArrayBag<ItemType>::getIndexOf(const ItemType& target) const
    return result;
 }  // end getIndexOf
 
+template<class ItemType> //bag full of a certain object
+void ArrayBag<ItemType>::operator+=(const ArrayBag<ItemType> &rhs) const{
+   if(item_count_==10){
+      return;
+   }
+   else{
+      for(int i=0; i<rhs.item_count_;i++){
+         add(rhs.item_[i]);
+      }
+   }
+}
+
+template<class ItemType>
+void ArrayBag<ItemType>::operator/=(const ArrayBag<ItemType> &rhs) const{
+   int count=item_count_;
+   if(item_count_==10){
+      return;
+   }
+   else{
+      for(int i=0; i<rhs.item_count_;i++){
+         while(count<10){
+            if(!contains(rhs.item_[i])){
+               add(rhs.item_[i]);
+               count++;
+            }
+         }
+      }
+   }
+}
