@@ -62,16 +62,17 @@ bool LibraryRecord::duplicateStock(){
 
 
 bool LibraryRecord::removeStock(const Book& a_book){
-  if(contains(a_book)==false){
-    return false;
-  }
-  while{
-    if(contains(a_book)){
-        for(int i=0; i<item)
+    if(!contains(a_book)){
+        return false;
     }
-  }
+    while(contains(a_book)){
+        remove(a_book);
+    }
+    return true;
 
 }
+
+
 
 
 
@@ -87,14 +88,23 @@ bool LibraryRecord::removeStock(const Book& a_book){
 **/
 
 bool LibraryRecord::equivalentRecords(const LibraryRecord &rhs){
-    if(getCurrentSize()!=rhs.getCurrentSize())
-    {
+    if (getCurrentSize() != rhs.getCurrentSize()){
         return false;
     }
-    for(int i=0; i<getCurrentSize(); i++){
-       
+    for (int i = 0; i < getCurrentSize(); i++){
+        if(!rhs.contains(copy_of_out_books[i])){
+            return false;
+        }
+        else if(getFrequencyOf(copy_of_out_books[i])!=rhs.getFrequencyOf(copy_of_out_books[i]))
+        {
+            return false;
+        }
+        else{
+            return true;
+        }       
     }
 }
+
 void LibraryRecord:: operator+=(LibraryRecord &rhs) {
     int count=0;
         for(int i=0; i<rhs.item_count_;i++){
@@ -117,11 +127,17 @@ void LibraryRecord::operator/=(LibraryRecord &rhs) {
         return;
     }
     else{
-        for(int i=0; i<rhs.item_count_;i++){
-            while(count<DEFAULT_CAPACITY)
+      for(int i=0; i<rhs.item_count_;i++){
+         while(count<10){
+            if(!contains(rhs.items_[i])){
+               add(rhs.items_[i]);
+               count++;
+            }
         }
+      }
     }
 }
+
 
 
 
