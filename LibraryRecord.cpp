@@ -36,7 +36,7 @@ bool LibraryRecord::checkOut(const Book& a_book){
 */
 int LibraryRecord::getCheckOutHistory(const Book& a_book){
     int count;
-    for(int i=0; i<copy_of_out_books.size(); i++){
+    for(int i=0; i<item_count_; i++){
         if(copy_of_out_books[i]==a_book){
             count+=1;
         }
