@@ -9,7 +9,9 @@ CSCI 235 Spring 2023
 
 #include "LibraryRecord.hpp"
 
+LibraryRecord::LibraryRecord() : ArrayBag<Book>() {
 
+}
 /** @param:   A reference to a Book object to be checked in
     @return:  returns true if a book was successfully added to items_, false otherwise
     @post:    adds book to items_.
@@ -50,13 +52,10 @@ int LibraryRecord::getCheckOutHistory(const Book& a_book){
      and the number of times each Book has been chceked out
 **/
 void LibraryRecord::display(){
-   std::string displayed;
-   for(int i =0; i<item_count_;i++){
-        items_[i].display();
-        std::cout<<"It has been checked out " + getCheckOutHistory(items_[i]);
-        std::cout<<" times.\n";
-        
-   } 
+  for (int i = 0; i < getCurrentSize(); i++){
+    items_[i].display();
+    std::cout << "It has been checked out " << getCheckOutHistory(items_[i]) <<" times.\n";
+  }
 }
 
 /**
@@ -78,14 +77,23 @@ void LibraryRecord::displayTitles(){
     @post:      Duplicates all the items in the LibraryRecord
 **/
 bool LibraryRecord::duplicateStock(){
-    if(item_count_*2<DEFAULT_CAPACITY){
-        for(int i=0; i<item_count_; i++){
-            items_[item_count_] = items_[i];
+  bool final = false;
+
+  if((item_count_ *2) <= DEFAULT_CAPACITY)
+  {
+    final = true;
+    int before_dup_size = 0;
+    before_dup_size = getCurrentSize();
+    int j = 0;
+        for(int i = 0; i < before_dup_size; i++)
+        {
+            items_[getCurrentSize()] = items_[j];
             item_count_++;
+            j++;
         }
-        return true;
-    }
-    return false;
+  }
+  return final;
+
 }
 
 /**
@@ -94,13 +102,15 @@ bool LibraryRecord::duplicateStock(){
         @post: remove all occurrences of the referenced book
 */
 bool LibraryRecord::removeStock(const Book& a_book){
-    if(!contains(a_book)){
-        return false;
-    }
-    while(contains(a_book)){
-        remove(a_book);
-    }
-    return true;
+  bool final = false;
+  int occurence = 0;
+  occurence = getFrequencyOf(a_book);
+  for(int i = 0; i < occurence; i++)
+  {
+    remove(a_book);
+    final= true;
+  }
+  return final;
 
 }
 /**
@@ -110,21 +120,17 @@ bool LibraryRecord::removeStock(const Book& a_book){
     and those of the referenced LibraryRecord are [book3, book1, book2], it will return true.
 */
 bool LibraryRecord::equivalentRecords(const LibraryRecord &rhs){
-    if (getCurrentSize() != rhs.getCurrentSize()){
-        return false;
+   bool final = false;
+    for(int i = 0; i < getCurrentSize(); i++){
+    if(getFrequencyOf(items_[i]) != rhs.getFrequencyOf(items_[i])){
+      final = false;
+      break;
     }
-    for (int i = 0; i < getCurrentSize(); i++){
-        if(!rhs.contains(copy_of_out_books[i])){
-            return false;
-        }
-        else if(getFrequencyOf(copy_of_out_books[i])!=rhs.getFrequencyOf(copy_of_out_books[i]))
-        {
-            return false;
-        }
-        else{
-            return true;
-        }       
+    else if(rhs.contains(items_[i]) == true)
+    {
+      final = true;
     }
+  }
 }
 
 /**
@@ -151,23 +157,22 @@ void LibraryRecord:: operator+=(LibraryRecord &rhs) {
 **/
 
 void LibraryRecord::operator/=(LibraryRecord &rhs) {
-   /** 
-    int count=item_count_;
-    if(item_count_==DEFAULT_CAPACITY){
-        return;
-    }
-    else{
-      for(int i=0; i<rhs.item_count_;i++){
-         while(count<10){
-            if(!contains(rhs.items_[i])){
-               add(rhs.items_[i]);
-               count++;
-            }
-        }
+  int totalCount= item_count_ + rhs.item_count_;
+   if (totalCount<= DEFAULT_CAPACITY)
+   {
+      for (int i = 0; i < rhs.item_count_; i++)
+      {
+         if(!contains(rhs.items_[i]))
+         {
+            items_[item_count_] = rhs.items_[i];
+            item_count_++;
+
+          for(int j = 0; j < rhs.getCheckOutHistory(rhs.items_[i]); j++){
+            copy_of_out_books.push_back((rhs.items_[i]));
+         } 
+         }
       }
-    }
-**/
-    return;
+   }
 }
 
 
