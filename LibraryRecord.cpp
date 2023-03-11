@@ -154,7 +154,7 @@ void LibraryRecord:: operator+=(LibraryRecord &rhs) {
 **/
 
 void LibraryRecord::operator/=(LibraryRecord &rhs) {
-   /** int count=item_count_;
+    int count=item_count_;
     if(item_count_==DEFAULT_CAPACITY){
         return;
     }
@@ -168,8 +168,6 @@ void LibraryRecord::operator/=(LibraryRecord &rhs) {
         }
       }
     }
-    **/
-   return;
 }
 
 
