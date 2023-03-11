@@ -14,8 +14,13 @@ CSCI 235 Spring 2023
     @post:    adds book to items_.
 **/
 bool LibraryRecord::checkIn(const Book& a_book){
-    return add(a_book);
+  bool output = false;
+    if(add(a_book) == true){
+        output = true;
+    }
+  return output;
 }
+
 
 /** @param:   A reference to a Book object to be checked out   
     @return:  returns true if a book was successfully removed from items_, false otherwise
