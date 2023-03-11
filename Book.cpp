@@ -102,7 +102,6 @@ void Book::setDigital(){
 bool Book::operator==(const Book &rhs) const{
     return title_==rhs.title_&&author_==rhs.author_ && page_count_==rhs.page_count_&&is_digital_==rhs.is_digital_;
 
-
 }
 /**
   @param     : A reference to the right hand side of the != operator.
@@ -121,10 +120,10 @@ bool Book::operator!=(const Book &rhs) const{
 void Book::display(){
     std::string digiPlace ="";
     if(is_digital_==true){
-        digiPlace=" It is ";
+        digiPlace=". It is ";
     }
     else{
-        digiPlace=" It is not ";
+        digiPlace=". It is not ";
     }
 
     std::cout<<title_<<" is written by "<<author_<<". Page Count: "<<page_count_ << digiPlace<< "available digitally.\n";  
