@@ -68,8 +68,6 @@ bool LibraryRecord::duplicateStock(){
 }
 
 
-
-
 bool LibraryRecord::removeStock(const Book& a_book){
     if(!contains(a_book)){
         return false;
@@ -80,21 +78,6 @@ bool LibraryRecord::removeStock(const Book& a_book){
     return true;
 
 }
-
-
-
-
-
-
-/**@param:   A reference to another LibraryRecord
-  @return:  Returns true if the 2 library records have the same contents 
-  (including the same number of duplicates for each book), regardless of their order. 
-  For example, if the current holdings of the LibraryRecord are [book1, book2, book3]
-  and those of the referenced LibraryRecord are [book3, book1, book2], it will return true.
-
-  However, [book1, book2, book2, book3] is not equivalent to [book1, book2, book3, book3], 
-  because it contains two copies of book2 and only one copy of book3 
-**/
 
 bool LibraryRecord::equivalentRecords(const LibraryRecord &rhs){
     if (getCurrentSize() != rhs.getCurrentSize()){
