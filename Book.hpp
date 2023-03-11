@@ -1,5 +1,4 @@
-#ifndef BOOK_HPP_
-#define BOOK_HPP_
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -88,4 +87,4 @@ class Book{
     bool is_digital_; // A flag indicating whether the book is available in digital form (a Boolean)
 };
 
-#endif
+
