@@ -79,12 +79,11 @@ void LibraryRecord::displayTitles(){
 **/
 bool LibraryRecord::duplicateStock(){
     if(item_count_*2<DEFAULT_CAPACITY){
-    for(int i=0; i<item_count_; i++){
-        items_[item_count_] = items_[i];
-        item_count_++;
-
-    }
-    return true;
+        for(int i=0; i<item_count_; i++){
+            items_[item_count_] = items_[i];
+            item_count_++;
+        }
+        return true;
     }
     return false;
 }
@@ -111,7 +110,7 @@ bool LibraryRecord::removeStock(const Book& a_book){
     and those of the referenced LibraryRecord are [book3, book1, book2], it will return true.
 */
 bool LibraryRecord::equivalentRecords(const LibraryRecord &rhs){
-    if (getCurrentSize() != rhs.getCurrentSize()){
+    /**if (getCurrentSize() != rhs.getCurrentSize()){
         return false;
     }
     for (int i = 0; i < getCurrentSize(); i++){
@@ -126,6 +125,8 @@ bool LibraryRecord::equivalentRecords(const LibraryRecord &rhs){
             return true;
         }       
     }
+    **/
+   return true;
 }
 
 /**
@@ -152,7 +153,7 @@ void LibraryRecord:: operator+=(LibraryRecord &rhs) {
 **/
 
 void LibraryRecord::operator/=(LibraryRecord &rhs) {
-    int count=item_count_;
+   /** int count=item_count_;
     if(item_count_==DEFAULT_CAPACITY){
         return;
     }
@@ -166,6 +167,8 @@ void LibraryRecord::operator/=(LibraryRecord &rhs) {
         }
       }
     }
+    **/
+   return;
 }
 
 
