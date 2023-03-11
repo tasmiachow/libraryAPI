@@ -9,9 +9,6 @@ CSCI 235 Spring 2023
 
 #include "LibraryRecord.hpp"
 
-LibraryRecord::LibraryRecord() : ArrayBag<Book>() {
-
-}
 /** @param:   A reference to a Book object to be checked in
     @return:  returns true if a book was successfully added to items_, false otherwise
     @post:    adds book to items_.
@@ -169,7 +166,7 @@ void LibraryRecord::operator/=(LibraryRecord &rhs) {
 
           for(int j = 0; j < rhs.getCheckOutHistory(rhs.items_[i]); j++){
             copy_of_out_books.push_back((rhs.items_[i]));
-         } 
+            } 
          }
       }
    }
