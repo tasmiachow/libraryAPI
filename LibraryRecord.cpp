@@ -26,7 +26,9 @@ bool LibraryRecord::checkOut(const Book& a_book){
         copy_of_out_books.push_back(a_book);
         return true;
     }
-    return false;
+    else{
+        return false;
+    }
 }
 
 /**
@@ -75,7 +77,6 @@ void LibraryRecord::displayTitles(){
 **/
 bool LibraryRecord::duplicateStock(){
   bool final = false;
-
   if((item_count_ *2) <= DEFAULT_CAPACITY)
   {
     final = true;
@@ -90,7 +91,6 @@ bool LibraryRecord::duplicateStock(){
         }
   }
   return final;
-
 }
 
 /**
