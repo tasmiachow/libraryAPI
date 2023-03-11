@@ -139,6 +139,12 @@ int ArrayBag<ItemType>::getIndexOf(const ItemType& target) const
    return result;
 }  // end getIndexOf
 
+/**
+    @param:   A reference to another ArrayBag object
+    @post:    Combines the contents from both ArrayBag objects, including duplicates, adding items from the argument bag as long as there is space.
+    Example: [1, 2, 3] += [1, 4] will produce [1, 2, 3, 1, 4]
+*/
+
 template<class ItemType> //bag full of a certain object
 void ArrayBag<ItemType>::operator+=(const ArrayBag<ItemType> &rhs) const{
    if(item_count_==10){
@@ -151,6 +157,10 @@ void ArrayBag<ItemType>::operator+=(const ArrayBag<ItemType> &rhs) const{
    }
 }
 
+/** @param:   A reference to another ArrayBag object
+    @post:    Combines the contents from both ArrayBag objects, EXCLUDING duplicates.
+    Example: [1, 2, 3] /= [1, 4] will produce [1, 2, 3, 4]
+*/
 template<class ItemType>
 void ArrayBag<ItemType>::operator/=(const ArrayBag<ItemType> &rhs) const{
    int count=item_count_;

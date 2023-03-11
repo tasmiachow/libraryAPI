@@ -1,3 +1,11 @@
+/*
+Name: Tasmia Chowdhury 
+Class: 235 
+Date: 3/1
+
+ArrayBag implementation for term project
+CSCI 235 Spring 2023
+*/
 #include "Book.hpp"
 #include <iostream>
 #include <string>
@@ -79,16 +87,37 @@ void Book::setDigital(){
   is_digital_ = true;
 }
 
-/**operator function allows us to check our created objects*/
+/**operator function allows us to check our created objects/**
+  @param     : A reference to the right hand side of the == operator.
+  @return     : Returns true if the right hand side book is the identical, false otherwise.
+
+  Note: ALL attributes must be equal for two books to be deemed equal.
+
+  Example: In order for book1 to be == to book 2 we must have:
+  - The same title
+  - The same author
+  - The same page count
+  - They must either be both digital or both not
+**/
 bool Book::operator==(const Book &rhs) const{
     return title_==rhs.title_&&author_==rhs.author_ && page_count_==rhs.page_count_&&is_digital_==rhs.is_digital_;
 
 
 }
+/**
+  @param     : A reference to the right hand side of the != operator.
+  @return     : Returns true if the right hand side book is NOT identical (!=), false otherwise.
+
+  Note: ALL attributes must be equal for two books to be deemed equal.
+**/
+
 bool Book::operator!=(const Book &rhs) const{
     return !(*this==rhs); 
 }
-
+/**
+  @post     : displays Book data in the form:
+  "[title_] is written by [author_]. Page Count: [page_count_]. [It is / It is not] available digitally.\n"     
+**/
 void Book::display(){
     std::string digiPlace ="";
     if(is_digital_==true){
