@@ -54,7 +54,7 @@ void LibraryRecord::display(){
    for(int i =0; i<item_count_;i++){
         items_[i].display();
         std::cout<<"It has been checked out " + getCheckOutHistory(items_[i]);
-        std::cout<<" times\n";
+        std::cout<<" times.\n";
         
    } 
 }
