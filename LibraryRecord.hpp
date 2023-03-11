@@ -3,7 +3,7 @@ Name: Tasmia Chowdhury
 Class: 235 
 Date: 3/1
 
-ArrayBag interface for term project
+LibraryRecord interface for term project
 CSCI 235 Spring 2023
 */
 #pragma once 

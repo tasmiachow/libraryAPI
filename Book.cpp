@@ -3,7 +3,7 @@ Name: Tasmia Chowdhury
 Class: 235 
 Date: 3/1
 
-ArrayBag implementation for term project
+BooK Method implementation for term project
 CSCI 235 Spring 2023
 */
 #include "Book.hpp"
