@@ -64,11 +64,17 @@ void LibraryRecord::display(){
 */
 void LibraryRecord::displayTitles(){
     std::string titles;
-    for(int i =0; i<getCurrentSize()-1;i++){
-        titles += items_[i].getTitle()+", ";
+    for(int i = 0; i < getCurrentSize(); i++){
+    if(i > 0)
+    {
+      std::cout << ", ";
     }
-    titles+=items_[-1].getTitle()+"!"+"\n";
-    std::cout<<titles; 
+    std::cout << items_[i].getTitle() << "";
+    if(i == (getCurrentSize() - 1))
+    {
+      std::cout << "!\n";
+    }
+  }
 }
 
 /**
