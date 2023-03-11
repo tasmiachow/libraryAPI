@@ -25,8 +25,9 @@ bool LibraryRecord::checkIn(const Book& a_book){
 bool LibraryRecord::checkOut(const Book& a_book){
     if(remove(a_book)==true){
         copy_of_out_books.push_back(a_book);
+        return true;
     }
-    return remove(a_book);
+    return false;
 }
 
 /**
