@@ -15,7 +15,7 @@ CSCI 235 Spring 2023
 **/
 bool LibraryRecord::checkIn(const Book& a_book){
     bool output = false;
-    if( add(a_book) == true){
+    if(add(a_book) == true){
         output = true;
     }
     return output;
