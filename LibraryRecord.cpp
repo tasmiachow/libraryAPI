@@ -40,7 +40,7 @@ bool LibraryRecord::checkOut(const Book& a_book){
     @return:  The number of times (int) the referenced Book has been checked out
 */
 int LibraryRecord::getCheckOutHistory(const Book& a_book){
-    int count;
+    int count =0;
     for(int i=0; i<copy_of_out_books.size(); i++){
         if(copy_of_out_books[i]==a_book){
             count+=1;
@@ -138,6 +138,7 @@ bool LibraryRecord::equivalentRecords(const LibraryRecord &rhs){
       final = true;
     }
   }
+  return final;
 }
 
 /**
